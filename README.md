@@ -1,2 +1,0 @@
-# MARS_SOM_SYSTEM
- 
