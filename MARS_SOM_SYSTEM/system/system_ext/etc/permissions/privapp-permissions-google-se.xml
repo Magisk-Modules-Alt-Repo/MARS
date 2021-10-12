@@ -26,13 +26,21 @@ It allows additional grants on top of privapp-permissions-platform.xml
         <permission name="android.permission.WRITE_EMBEDDED_SUBSCRIPTIONS"/>
         <permission name="android.permission.SET_WALLPAPER_COMPONENT"/>
         <permission name="android.permission.LOCATION_HARDWARE"/>
-        <permission name="android.permission.ACCESS_CONTEXT_HUB"/>
         <permission name="android.permission.REGISTER_STATS_PULL_ATOM"/>
         <permission name="android.permission.REQUEST_NETWORK_SCORES"/>
     </privapp-permissions>
 
     <privapp-permissions package="com.android.settings">
         <permission name="android.permission.INSTALL_DYNAMIC_SYSTEM"/>
+    </privapp-permissions>
+
+    <privapp-permissions package="com.android.systemui">
+        <permission name="android.permission.WRITE_EMBEDDED_SUBSCRIPTIONS"/>
+        <permission name="android.permission.SET_WALLPAPER_COMPONENT"/>
+        <permission name="android.permission.LOCATION_HARDWARE"/>
+        <permission name="android.permission.PACKAGE_USAGE_STATS"/>
+        <permission name="android.permission.REQUEST_NETWORK_SCORES"/>
+        <permission name="android.permission.DUMP"/>
     </privapp-permissions>
 
     <privapp-permissions package="com.google.android.storagemanager">
@@ -60,11 +68,6 @@ It allows additional grants on top of privapp-permissions-platform.xml
         <permission name="android.permission.CONTROL_REMOTE_APP_TRANSITION_ANIMATIONS"/>
         <permission name="android.permission.PACKAGE_USAGE_STATS"/>
         <permission name="android.permission.WRITE_SECURE_SETTINGS"/>
-        <permission name="android.permission.START_TASKS_FROM_RECENTS"/>
-        <permission name="android.permission.STATUS_BAR"/>
-        <permission name="android.permission.STOP_APP_SWITCHES"/>
-        <permission name="com.google.pixel.exo.PUSH_STREAMING_CONTENT"/>
-        <permission name="android.permission.BROADCAST_CLOSE_SYSTEM_DIALOGS"/>
     </privapp-permissions>
 
     <privapp-permissions package="com.google.android.gsf">
@@ -107,12 +110,15 @@ It allows additional grants on top of privapp-permissions-platform.xml
         <permission name="android.permission.READ_WALLPAPER_INTERNAL"/>
         <permission name="android.permission.SET_WALLPAPER_COMPONENT"/>
         <permission name="android.permission.WRITE_SECURE_SETTINGS"/>
-        <permission name="android.permission.MODIFY_DAY_NIGHT_MODE"/>
     </privapp-permissions>
 
     <privapp-permissions package="com.google.android.feedback">
         <permission name="android.permission.READ_LOGS"/>
         <permission name="android.permission.PACKAGE_USAGE_STATS"/>
+    </privapp-permissions>
+
+    <privapp-permissions package="com.google.android.onetimeinitializer">
+        <permission name="android.permission.CHANGE_COMPONENT_ENABLED_STATE"/>
     </privapp-permissions>
 
     <privapp-permissions package="com.android.yadayada">
@@ -129,9 +135,12 @@ It allows additional grants on top of privapp-permissions-platform.xml
         <permission name="android.permission.START_ACTIVITIES_FROM_BACKGROUND"/>
     </privapp-permissions>
 
+    <privapp-permissions package="com.google.android.apps.cbrsnetworkmonitor">
+        <permission name="android.permission.INTERACT_ACROSS_USERS"/>
+    </privapp-permissions>
+
     <privapp-permissions package="com.google.android.grilservice">
         <permission name="android.permission.INTERACT_ACROSS_USERS"/>
-        <permission name="android.permission.READ_PRIVILEGED_PHONE_STATE"/>
     </privapp-permissions>
 
     <privapp-permissions package="com.google.android.connectivitymonitor">
@@ -147,15 +156,6 @@ It allows additional grants on top of privapp-permissions-platform.xml
         <permission name="android.permission.READ_PRIVILEGED_PHONE_STATE"/>
         <permission name="android.permission.READ_NETWORK_USAGE_HISTORY"/>
         <permission name="android.permission.REGISTER_STATS_PULL_ATOM"/>
-        <permission name="android.permission.READ_PRECISE_PHONE_STATE"/>
-    </privapp-permissions>
-
-    <privapp-permissions package="com.google.android.gnsspixelmonitor">
-        <permission name="android.permission.MODIFY_PHONE_STATE"/>
-        <permission name="android.permission.ACCESS_FINE_LOCATION"/>
-        <permission name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
-        <permission name="android.permission.DUMP"/>
-        <permission name="android.permission.REGISTER_STATS_PULL_ATOM"/>
     </privapp-permissions>
 
     <privapp-permissions package="com.android.refreshratecontrol">
@@ -169,8 +169,8 @@ It allows additional grants on top of privapp-permissions-platform.xml
     </privapp-permissions>
 
     <privapp-permissions package="com.google.oslo">
-        <permission name="android.permission.ACCESS_CONTEXT_HUB"/>
         <permission name="android.permission.CAPTURE_AUDIO_HOTWORD"/>
+        <permission name="android.permission.LOCATION_HARDWARE"/>
         <permission name="android.permission.MANAGE_SOUND_TRIGGER"/>
         <permission name="android.permission.MANAGE_USERS"/>
         <permission name="android.permission.MEDIA_CONTENT_CONTROL"/>
@@ -191,7 +191,6 @@ It allows additional grants on top of privapp-permissions-platform.xml
 
     <privapp-permissions package="com.google.android.devicedropmonitor">
         <permission name="android.permission.ACCESS_CONTEXT_HUB"/>
-        <permission name="android.permission.READ_DEVICE_CONFIG"/>
         <permission name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     </privapp-permissions>
 
@@ -203,9 +202,5 @@ It allows additional grants on top of privapp-permissions-platform.xml
     <privapp-permissions package="com.google.android.iphealthmonitor">
         <permission name="android.permission.ACCESS_CONTEXT_HUB"/>
         <permission name="android.permission.RECEIVE_BOOT_COMPLETED"/>
-    </privapp-permissions>
-
-    <privapp-permissions package="com.google.android.turboadapter">
-        <permission name="android.permission.DUMP"/>
     </privapp-permissions>
 </permissions>

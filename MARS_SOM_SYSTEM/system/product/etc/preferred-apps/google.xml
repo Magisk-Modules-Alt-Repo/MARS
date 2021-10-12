@@ -51,14 +51,6 @@
             <type name="image/vnd.wap.wbmp" />
         </filter>
     </item>
-    <item name="com.google.android.apps.nbu.files/.gateway.browse.BrowseGatewayHandler">
-        <filter>
-            <action name="android.intent.action.VIEW" />
-            <cat name="android.intent.category.DEFAULT" />
-            <scheme name="content" />
-            <type name="vnd.android.document/root" />
-        </filter>
-    </item>
     <item name="com.google.android.apps.photos/.home.HomeActivity">
         <filter>
             <action name="android.intent.action.MAIN" />

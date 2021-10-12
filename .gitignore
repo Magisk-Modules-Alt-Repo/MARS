@@ -2,4 +2,4 @@ __MACOSX
 .DS_Store
 MARS_SOM_SYSTEM.zip
 MARS_APP.apk
-PrebuiltGmsCoreSc.apk
+com.android.vndk.current.apex

@@ -5,14 +5,6 @@
     <!-- This is meant to be the canonical feature identifying 2017 and newer Nexus devices. -->
     <feature name="com.google.android.feature.PIXEL_2017_EXPERIENCE" />
 
-    <!--
-       This is the canonical feature identifying devices which bundle Google Fi support. The
-       Fi app and associated apps will be bundled (but may be disabled until a matching SIM
-       is inserted).
-       This feature may not be present before Android S.
-    -->
-    <feature name="com.google.android.feature.GOOGLE_FI_BUNDLED" />
-
     <!-- Allow SCONE JobIntentService & Services to run in background -->
     <allow-in-power-save package="com.google.android.apps.scone" />
 
@@ -29,14 +21,6 @@
 
     <!-- Allow MDS ExperimentService to run in background -->
     <allow-in-power-save package="com.google.mds" />
-
-    <!-- Allow OMA DM to run in background -->
-    <allow-in-power-save package="com.android.omadm.service" />
-    <allow-in-power-save package="com.android.sdm.plugins.connmo" />
-    <allow-in-power-save package="com.android.sdm.plugins.dcmo" />
-    <allow-in-power-save package="com.android.sdm.plugins.diagmon" />
-    <allow-in-power-save package="com.android.vzwomatrigger" />
-    <allow-in-power-save package="com.android.sdm.plugins.usccdm" />
 
     <!-- Hide DocumentsUi Launcher/Downloads intent handling. DocumentsUi
          PrebootReceiver does not properly hide the launcher in work profile,
@@ -60,6 +44,16 @@
         <!-- Display regulatory info in settings. -->
         <component class=".RegulatoryInfoDisplayActivity" enabled="true" />
     </component-override>
+
+    <!-- Stub for Fi to request bug reports, disabled until a Fi SIM is added.
+         Included for all in-market devices receiving the R OTA as well as
+         devices launching with R. -->
+    <disabled-until-used-preinstalled-carrier-associated-app
+        package="com.google.android.apps.nova.bugreportwrapper"
+        carrierAppPackage="com.google.android.apps.tycho"
+        addedInSdk="30" />
+    <!-- Allow access to BugreportManager. -->
+    <bugreport-whitelisted package="com.google.android.apps.nova.bugreportwrapper" />
 
     <!-- Feature flag on RVC builds for AER requirements, b/159247801 -->
     <feature name="com.google.android.feature.AER_OPTIMIZED" />

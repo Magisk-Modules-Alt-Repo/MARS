@@ -3,6 +3,5 @@
     <privapp-permissions package="com.google.android.apps.dreamliner">
         <permission name="android.permission.START_ACTIVITIES_FROM_BACKGROUND"/>
         <permission name="android.permission.GET_ACCOUNTS_PRIVILEGED"/>
-        <permission name="android.permission.MODIFY_AUDIO_ROUTING"/>
     </privapp-permissions>
 </permissions>

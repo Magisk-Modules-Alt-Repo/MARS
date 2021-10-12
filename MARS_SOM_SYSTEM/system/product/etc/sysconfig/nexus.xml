@@ -15,6 +15,9 @@
         over cable provided by the Pixelmigrate app. -->
     <feature name="com.google.android.feature.D2D_CABLE_MIGRATION_FEATURE" />
 
+    <!-- Enable Zero Touch Provisioning support for 2016 and newer Nexus devices. -->
+    <feature name="com.google.android.feature.ZERO_TOUCH" />
+
     <!-- Allow WfcActivation app scheduled jobs to run when app in background. -->
     <allow-in-power-save-except-idle package="com.google.android.wfcactivation" />
 
@@ -26,9 +29,6 @@
 
     <!-- Allow connectivitythermalpowermanager service in background -->
     <allow-in-power-save package="com.google.android.connectivitythermalpowermanager" />
-
-    <!-- Allow iwlan service in backgroud-->
-    <allow-in-power-save package="com.google.android.iwlan" />
 
     <!-- Allow ramdump uploader service in background -->
     <allow-in-power-save package="com.android.ramdump" />
@@ -62,7 +62,4 @@
     <!-- Allow eMBMS middleware services to run in the background -->
     <allow-in-power-save package="com.qualcomm.ltebc_vzw" />
     <allow-in-power-save package="com.qualcomm.ltebc" />
-
-    <!-- Allow gnss pixel monitor to run in the background -->
-    <allow-in-power-save package="com.google.android.gnsspixelmonitor" />
 </config>

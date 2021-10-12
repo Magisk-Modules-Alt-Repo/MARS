@@ -1,6 +1,6 @@
 # MARS
 
-MINAPI=31
+MINAPI=30
 MAXAPI=31
 DYNLIB=false
 DEBUG=false
