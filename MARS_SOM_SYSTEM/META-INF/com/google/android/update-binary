@@ -56,8 +56,11 @@ print_modname() {
   pounds=$(printf "%${len}s" | tr ' ' '*')
   ui_print "$pounds"
   ui_print " $MODNAME "
-  ui_print " FROM $MODAUTH "
+  ui_print " by $MODAUTH "
   ui_print "$pounds"
+  ui_print "*******************"
+  ui_print " Powered by Magisk "
+  ui_print "*******************"
 }
 
 # Override abort as old scripts have some issues
@@ -135,7 +138,7 @@ if is_legacy_script; then
   # service scripts
   $LATESTARTSERVICE && cp -af $TMPDIR/service.sh $MODPATH/service.sh
 
-  ui_print "- SETTING PERMISSIONS"
+  ui_print "- Setting permissions"
   set_permissions
 else
   print_modname
@@ -143,7 +146,7 @@ else
   unzip -o "$ZIPFILE" customize.sh -d $MODPATH >&2
 
   if ! grep -q '^SKIPUNZIP=1$' $MODPATH/customize.sh 2>/dev/null; then
-    ui_print "- EXTRACTING MODULE FILES"
+    ui_print "- Extracting module files"
     unzip -o "$ZIPFILE" -x 'META-INF/*' -d $MODPATH >&2
 
     # Default permissions
@@ -156,7 +159,7 @@ fi
 
 # Handle replace folders
 for TARGET in $REPLACE; do
-  ui_print "- REPLACE TARGET: $TARGET"
+  ui_print "- Replace target: $TARGET"
   mktouch $MODPATH$TARGET/.replace
 done
 
@@ -168,7 +171,7 @@ fi
 
 # Copy over custom sepolicy rules
 if [ -f $MODPATH/sepolicy.rule -a -e $PERSISTDIR ]; then
-  ui_print "- INSTALLING CUSTOM SEPOLICY PATCH"
+  ui_print "- Installing custom sepolicy patch"
   # Remove old recovery logs (which may be filling partition) to make room
   rm -f $PERSISTDIR/cache/recovery/*
   PERSISTMOD=$PERSISTDIR/magisk/$MODID
@@ -189,5 +192,5 @@ cd /
 $BOOTMODE || recovery_cleanup
 rm -rf $TMPDIR
 
-ui_print "- DONE"
+ui_print "- Done"
 exit 0

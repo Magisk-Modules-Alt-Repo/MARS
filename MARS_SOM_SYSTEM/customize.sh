@@ -7,6 +7,7 @@ DEBUG=false
 
 REPLACE="
 /system/app/Stk
+/system/product/overlays/
 "
 
 # PERMISSIONS
