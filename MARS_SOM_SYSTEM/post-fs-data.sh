@@ -2,4 +2,4 @@
 
 MODDIR=${0%/*}
 
-setenforce 1
+setenforce 0

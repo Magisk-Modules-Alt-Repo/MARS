@@ -7,15 +7,8 @@
 
 
 ## INSTRUCTIONS
-- Make sure the latest official Magisk App is installed
-- Open up the Magisk Manager Modules Section and download/install "Magisk Hide Props"
-- Download also the "QuickSwitch" Magisk Module from there. You will need it...
-- Reboot!
-- Download Termux from the Play Store, open it and type in "su" to grant Root Permissions
-- Type in now "props" and select the first option "1"
-- Pick a Fingerprint from the List "f" and select the Google Pixel 4 XL option "7", "23", "y", "n"
-- Go back to the Main Menu and select Device Simulation "3"
-- Enable the Device Simulation "s", "y", followed by selecting all Props "a" and enable them "1", "y"
+- Make sure the latest official Magisk App (Stable) is installed
+- Open up the Magisk App Modules Section and download/install "QuickSwitch"
 - Reboot!
 - Download and extract the MARS_SOM-master.zip and open /MARS_SOM_SYSTEM/MARS_SOM_SYSTEM
 - Download and extract the NgaResources.apk to /MARS_SOM_SYSTEM/system/product/app/NgaResources
