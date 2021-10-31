@@ -6,6 +6,7 @@
 ![GITHUB ALL STARS](https://img.shields.io/github/stars/Miustone/MARS_SOM_SYSTEM-GEAR_THIRD?style=flat-square&labelColor=000000)
 
 
+
 ## INSTRUCTIONS
 - Make sure the latest official Magisk App (Stable) is installed
 - Open up the Magisk App Modules Section and download/install "QuickSwitch"
@@ -23,8 +24,21 @@
 - Done
 
 
+
+## DESCRIPTION
+
+### Important: Gears can be used like in this Example...
+- GEAR FIRST  (1st) + GEAR SECOND (2nd)                     = GEAR THIRTH (3th)
+- GEAR FIRST  (1st) + GEAR THIRD  (3rd)                     = GEAR FOURTH (4th)
+- GEAR SECOND (2nd) + GEAR THIRD  (3rd)                     = GEAR FIFTH  (5th)
+- GEAR FIRST  (1st) + GEAR SECOND (2nd) + GEARD THIRD (3rd) = GEAR SIXTH  (6th)
+### Tell Me/Us Your Gear/s and we will solve Your Problems together if needed!
+
+
+
 ## LINKS
 * https://linktr.ee/m1u5t0n3
+
 
 
 ## CREDITS ❤️
