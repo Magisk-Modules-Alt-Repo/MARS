@@ -21,6 +21,7 @@ REPLACE="
 /system/priv-app/SemcMusic
 /system/priv-app/SemcPhotoEditor
 /system/priv-app/SemcPhotoEditor
+/system/priv-app/SomcUiccDetection
 /system/priv-app/UpdateCenter-release
 /system/priv-app/com.facebook.services
 /system/priv-app/com.facebook.system
