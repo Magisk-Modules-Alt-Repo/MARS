@@ -12,6 +12,7 @@
 - Open up the Magisk App Modules Section and download/install "QuickSwitch"
 - Reboot!
 - Download and extract the MARS_SOM-master.zip and open /MARS_SOM_XXX/MARS_SOM_XXX
+- -Link: https://github.com/Miustone/MARS_SOM_SYSTEM-GEAR_THIRD/archive/refs/heads/main.zip
 - Download and extract the NgaResources.apk to /MARS_SOM_XXX/system/product/app/NgaResources
 - Link to the needed Files: https://sites.google.com/view/miustone/MARS_SOM ("MARS_SOM" Folder)
 - Mark the whole Content of the second MARS_SOM_XXX Folder and create a Zip File
