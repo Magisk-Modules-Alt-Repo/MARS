@@ -17,6 +17,7 @@ REPLACE="
 /system/app/com.netflix.mediaclient
 /system/app/com.sonymobile.support
 /system/app/daxService
+/system/media/bootanimation.zip
 /system/priv-app/SemcAlbum-albumLive-release
 /system/priv-app/SemcMusic
 /system/priv-app/SemcPhotoEditor
