@@ -37,6 +37,18 @@
 
 
 
+## DEVELOPMENT
+
+### If You want to help finding Bugs or solving Bootloops...
+- Follow the Instructions for installing MARS
+- You have extracted Folders like META-INF but which also contains a System Folder
+- Inside this System Folder, copy all Contents to another Location outside of the "Zip" You want to create
+- Start adding back Folders like "App", "Vendor", "System_Ext" one by one
+- See what causes the Problems and try again with less Folders
+- Tell Miustone what's causing Issues or Bootloops and we can solve it!
+
+
+
 ## LINKS
 * https://linktr.ee/m1u5t0n3
 

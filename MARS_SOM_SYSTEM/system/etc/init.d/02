@@ -1,0 +1,40 @@
+#!/system/bin/sh
+# ========================================
+#  TRIMMING
+# ========================================
+
+RUN_EVERY=86400
+
+# Get the last modify date of the Log file, if the file does not exist, set value to 0
+if [ -e $LOG_FILE ]; then
+    LASTRUN=`stat -t $LOG_FILE | awk '{print $14}'`
+else
+    LASTRUN=0
+fi;
+
+# Get current date in epoch format
+CURRDATE=`date +%s`
+
+# Check the interval
+INTERVAL=$(expr $CURRDATE - $LASTRUN)
+
+# If interval is more than the set one, then run the main script
+if [ $INTERVAL -gt $RUN_EVERY ];
+then
+     if [ -e /data/Trim.log ]; then
+     rm /data/Trim.log
+     fi
+
+     LOG=/data/trim.log
+     echo "* $(date +"%m-%d-%Y %r") *" >> $LOG
+     echo "*In /data*" >> $LOG
+     fstrim -v /data >> $LOG
+     echo "*In /cache*" >> $LOG
+     fstrim -v /cache >> $LOG
+     echo "*In /system*" >> $LOG
+     fstrim -v /system >> $LOG
+     echo "" >> $LOG
+     echo "Victod's Scripts" >> $LOG
+     echo "___________________________________**" >> $LOG
+     echo "" >> $LOG
+fi;

@@ -1,0 +1,39 @@
+#!/system/bin/sh
+# ========================================
+# CALL ASSIST
+# ========================================
+
+XML_FILE=/data/data/com.google.android.dialer/shared_prefs/dialer_phenotype_flags.xml
+
+RUN_EVERY=86400
+
+# Get the last modify date of the Log file, if the file does not exist, set value to 0
+if [ -e $LOG_FILE ]; then
+    LASTRUN=`stat -t $LOG_FILE | awk '{print $14}'`
+else
+    LASTRUN=0
+fi;
+
+# Get current date in epoch format
+CURRDATE=`date +%s`
+
+# Check the interval
+INTERVAL=$(expr $CURRDATE - $LASTRUN)
+
+# If interval is more than the set one, then run the main script
+if [ $INTERVAL -gt $RUN_EVERY ];
+then
+     if [ -f $XML_FILE ]; then
+
+     sed -i -e 's/name="G__speak_easy_bypass_locale_check" value="false"/name="G__speak_easy_bypass_locale_check" value="true"/g' $XML_FILE
+     sed -i -e 's/name="G__speak_easy_enable_listen_in_button" value="false"/name="G__speak_easy_enable_listen_in_button" value="true"/g' $XML_FILE
+     sed -i -e 's/name="__data_rollout__SpeakEasy.OverrideUSLocaleCheckRollout__launched__" value="false"/name="__data_rollout__SpeakEasy.OverrideUSLocaleCheckRollout__launched__" value="true"/g' $XML_FILE
+     sed -i -e 's/name="G__enable_speakeasy_details" value="false"/name="G__enable_speakeasy_details" value="true"/g' $XML_FILE
+     sed -i -e 's/name="G__speak_easy_enabled" value="false"/name="G__speak_easy_enabled" value="true"/g' $XML_FILE
+     sed -i -e 's/name="G__speakeasy_show_privacy_tour" value="false"/name="G__speakeasy_show_privacy_tour" value="true"/g' $XML_FILE
+     sed -i -e 's/name="__data_rollout__SpeakEasy.SpeakEasyDetailsRollout__launched__" value="false"/name="__data_rollout__SpeakEasy.SpeakEasyDetailsRollout__launched__" value="true"/g' $XML_FILE
+     sed -i -e 's/name="__data_rollout__SpeakEasy.CallScreenOnPixelTwoRollout__launched__" value="false"/name="__data_rollout__SpeakEasy.CallScreenOnPixelTwoRollout__launched__" value="true"/g' $XML_FILE
+
+     pm grant "com.google.android.dialer" android.permission.WRITE_EXTERNAL_STORAGE
+     am force-stop "com.google.android.dialer"
+fi;

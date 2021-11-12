@@ -1,6 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
 <Group id='FOSS Config'>
-
    <!-- version of FOSSConfig.xml should be maintained -->
    <version>"0.1a"</version>
    <!-- defaults will be used unless any mode overrides dynamic params -->

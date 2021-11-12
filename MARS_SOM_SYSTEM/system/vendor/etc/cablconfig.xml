@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Group id='CABLConfiguration'>
+
+<CABLBackLightMaxValue units='uint'>255</CABLBackLightMaxValue>
+<CABLBackLightMinValue units='uint'>1</CABLBackLightMinValue>
+<CABLBackLightThreshold units='uint'>124</CABLBackLightThreshold>
+
+<CABLBackLightMinRatio units='uint'>512 665 768</CABLBackLightMinRatio>
+<CABLBackLightMaxRatio units='uint'>950 950 950</CABLBackLightMaxRatio>
+<CABLPixelDistortion units='uint'>100 100 100</CABLPixelDistortion>
+<CABLBackLightStepSize units='uint'>6 6 6</CABLBackLightStepSize>
+
+
+<GammaResponseTableLength units='uint'>33</GammaResponseTableLength>
+<GammaResponseTableGrayScale units='uint'>
+0 32 64 96 129 161 193 225
+257 289 321 353 386 418 450 482
+514 546 578 610 643 675 707 739
+771 803 835 867 900 932 964 996
+1024
+</GammaResponseTableGrayScale>
+<GammaResponseTableLuminance units='uint'>
+0 1 2 6 11 17 26 36
+49 63 79 98 118 141 166 193
+223 255 289 325 364 405 449 495
+544 595 649 705 763 825 888 955
+1024
+</GammaResponseTableLuminance>
+
+<BackLightResponseTableLength units='uint'>11</BackLightResponseTableLength>
+<BackLightResponseValueTable units='uint'>
+0 100 200 300 400 500 600 700
+800 900 1024
+</BackLightResponseValueTable>
+<BackLightResponseLumaValues units='uint'>
+0 100 200 300 400 500 600 700
+800 900 1024
+</BackLightResponseLumaValues>
+
+<CABLSoftClippingSlope units='double'>0.32 0.28 0.25</CABLSoftClippingSlope>
+<CABLLutType units='int'>3 3 3</CABLLutType>
+<CABLWindowSizeThreshold units='uint'>8 6 4</CABLWindowSizeThreshold>
+<CABLFilterCoefficientThreshold units='uint'>820 750 600</CABLFilterCoefficientThreshold>
+<CABLBackLightReductionFactor units='uint'>1 1 1</CABLBackLightReductionFactor>
+<CABLBackLightStepSizeHighCorrelation units='uint'>6 6 6</CABLBackLightStepSizeHighCorrelation>
+<CABLSceneCorrelationThreshold units='uint'>1020 1024 1024</CABLSceneCorrelationThreshold>
+<CABLSceneChangeThreshold units='uint'>800 800 800</CABLSceneChangeThreshold>
+<LuxEndPoint units='uint'>0</LuxEndPoint>
+</Group>

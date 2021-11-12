@@ -1,0 +1,109 @@
+#!/system/bin/sh
+# ========================================
+# Various Optimizations
+# ========================================
+
+RUN_EVERY=86400
+
+# Get the last modify date of the Log file, if the file does not exist, set value to 0
+if [ -e $LOG_FILE ]; then
+    LASTRUN=`stat -t $LOG_FILE | awk '{print $14}'`
+else
+    LASTRUN=0
+fi;
+
+# Get current date in epoch format
+CURRDATE=`date +%s`
+
+# Check the interval
+INTERVAL=$(expr $CURRDATE - $LASTRUN)
+
+# If interval is more than the set one, then run the main script
+if [ $INTERVAL -gt $RUN_EVERY ];
+then
+     # suitable configuration to help reduce network latency
+     echo "2" > /proc/sys/net/ipv4/tcp_ecn;
+     echo "1" > /proc/sys/net/ipv4/tcp_sack;
+     echo "1" > /proc/sys/net/ipv4/tcp_dsack;
+     echo "1" > /proc/sys/net/ipv4/tcp_low_latency;
+     echo "1" > /proc/sys/net/ipv4/tcp_timestamps;
+     echo "2" > /proc/sys/net/ipv6/tcp_ecn;
+     echo "1" > /proc/sys/net/ipv6/tcp_sack;
+     echo "1" > /proc/sys/net/ipv6/tcp_dsack;
+     echo "1" > /proc/sys/net/ipv6/tcp_low_latency;
+     echo "1" > /proc/sys/net/ipv6/tcp_timestamps;
+
+     # reduce txqueuelen to 100 to optimize upload / download speeds
+     for i in /sys/class/net/*; do
+     echo "100" > $i/tx_queue_len;
+     done;
+
+     # Disable Gentle Fair Sleepers
+     echo "NO_GENTLE_FAIR_SLEEPERS" > /sys/kernel/debug/sched_features;
+     echo "NO_NEW_FAIR_SLEEPERS" > /sys/kernel/debug/sched_features;
+     echo "NO_NORMALIZED_SLEEPER" > /sys/kernel/debug/sched_features;
+
+     # Disables normalized sleeper
+     if [ -e /sys/kernel/debug/sched_features ]
+     then
+     echo "NO_NORMALIZED_SLEEPER" > /sys/kernel/debug/sched_features
+     fi
+
+     # Kernel Tweaks 
+     if [ -e /proc/sys/kernel/softlockup_panic ]
+     then 
+     echo "0" > /proc/sys/kernel/softlockup_panic
+     fi
+     if [ -e /proc/sys/kernel/hung_task_timeout_secs ]
+     then 
+     echo "0" > /proc/sys/kernel/hung_task_timeout_secs
+     fi
+     if [ -e /proc/sys/kernel/panic_on_oops ]
+     then 
+     echo "0" > /proc/sys/kernel/panic_on_oops
+     fi
+     if [ -e /proc/sys/kernel/panic ]
+     then 
+     echo "0" > /proc/sys/kernel/panic
+     fi
+
+     # RXS GPDF
+     busybox sleep 600
+     su -c "pm enable com.google.android.gms/.update.SystemUpdateActivity"
+     su -c "pm enable com.google.android.gms/.update.SystemUpdateService"
+     su -c "pm enable com.google.android.gms/.update.SystemUpdateService$ActiveReceiver"
+     su -c "pm enable com.google.android.gms/.update.SystemUpdateService$Receiver"
+     su -c "pm enable com.google.android.gms/.update.SystemUpdateService$SecretCodeReceiver"
+     su -c "pm enable com.google.android.gsf/.update.SystemUpdateActivity"
+     su -c "pm enable com.google.android.gsf/.update.SystemUpdatePanoActivity"
+     su -c "pm enable com.google.android.gsf/.update.SystemUpdateService"
+     su -c "pm enable com.google.android.gsf/.update.SystemUpdateService$Receiver"
+     su -c "pm enable com.google.android.gsf/.update.SystemUpdateService$SecretCodeReceiver"
+
+     # fs tweaks
+     echo "10" > /proc/sys/fs/lease-break-time;
+
+     # entropy tweaks
+     echo "1024" > /proc/sys/kernel/random/read_wakeup_threshold;
+     echo "1024" > /proc/sys/kernel/random/write_wakeup_threshold;
+
+     # tcp tweaks
+     echo "westwood" > /proc/sys/net/ipv4/tcp_congestion_control;
+     echo "westwood" > /proc/sys/net/ipv6/tcp_congestion_control;
+
+     # sysfs+sdcard tweaks
+     busybox mount -o remount,nosuid,nodev,noatime,nodiratime -t auto /;
+     busybox mount -o remount,nosuid,nodev,noatime,nodiratime -t auto /proc;
+     busybox mount -o remount,nosuid,nodev,noatime,nodiratime -t auto /sys;
+     busybox mount -o remount,nosuid,nodev,noatime,nodiratime -t auto /sys/kernel/debug;
+     busybox mount -o remount,nosuid,nodev,noatime,nodiratime -t auto /mnt/shell/emulated;
+     for i in /storage/emulated/*; do
+     busybox mount -o remount,nosuid,nodev,noatime,nodiratime -t auto $i;
+     busybox mount -o remount,nosuid,nodev,noatime,nodiratime -t auto $i/Android/obb;
+     done;
+
+     # partition tweaks
+     busybox mount -o remount,nosuid,nodev,noatime,nodiratime,barrier=0,noauto_da_alloc,discard -t auto /data;
+     busybox mount -o remount,nosuid,nodev,noatime,nodiratime,barrier=0,noauto_da_alloc,discard -t auto /cache;
+     busybox mount -o remount,nodev,noatime,nodiratime,barrier=0,noauto_da_alloc,discard -t auto /system;
+fi;

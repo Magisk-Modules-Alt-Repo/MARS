@@ -1,0 +1,43 @@
+#!/system/bin/sh
+# ========================================
+# Basics for init.d Scripts
+# ========================================
+
+RUN_EVERY=86400
+
+# Get the last modify date of the Log file, if the file does not exist, set value to 0
+if [ -e $LOG_FILE ]; then
+    LASTRUN=`stat -t $LOG_FILE | awk '{print $14}'`
+else
+    LASTRUN=0
+fi;
+
+# Get current date in epoch format
+CURRDATE=`date +%s`
+
+# Check the interval
+INTERVAL=$(expr $CURRDATE - $LASTRUN)
+
+# If interval is more than the set one, then run the main script
+if [ $INTERVAL -gt $RUN_EVERY ];
+then
+     mount -o remount,rw -t auto /system
+     mount -o remount,rw -t auto /data
+     mount -t rootfs -o remount,rw rootfs
+
+     if [ ! -e /system/etc/init.d ]; then
+        mkdir /system/etc/init.d
+        chown -R root.root /system/etc/init.d
+        chmod -R 755 /system/etc/init.d
+     fi
+	
+     	for FILE in /system/etc/init.d/*; do
+        sh $FILE >/dev/null
+     done;
+
+     mount -t rootfs -o remount,ro rootfs
+     mount -o remount,rw -t auto /data
+     mount -o remount,ro -t auto /system
+
+     sync;
+fi;

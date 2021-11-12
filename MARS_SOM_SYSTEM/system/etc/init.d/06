@@ -1,0 +1,59 @@
+#!/system/bin/sh
+# ========================================
+# Zipalign
+# ========================================
+
+if busybox [ -z "$( busybox which zipalign )" ]; then
+	echo "Error: zipalign binary missing."
+	exit 1
+fi
+
+START=` busybox date +%s `
+CODEPATHS=` pm list packages -f | busybox cut -d ':' -f2 | busybox cut -d '=' -f1 `
+TOTAL=` echo $CODEPATHS | busybox wc -w `
+CURRENT=0
+
+echo
+echo "Zipaligning..."
+echo
+
+busybox mount -o remount,rw /system
+
+for codepath in ${CODEPATHS}; do
+	
+	CURRENT=$(($CURRENT+1))
+	echo -n "(${CURRENT} of ${TOTAL}) "
+	
+	if busybox [ -e $codepath ]; then
+		zipalign -c 4 $codepath
+		ZIP_CHECK=$?
+		case $ZIP_CHECK in
+			1)
+				if zipalign -f 4 $codepath /data/local/pkg.apk; then
+					busybox cp -f /data/local/pkg.apk $codepath
+					busybox rm -f /data/local/pkg.apk
+					echo "[!] zipaligned ${codepath}"
+				fi
+			;;
+			*)
+				echo "[X] $codepath was already zipaligned"
+			;;
+		esac
+	fi
+
+done
+
+busybox mount -o remount,ro /system
+sync
+
+STOP=` busybox date +%s `
+RUNTIME=` busybox expr $STOP - $START`
+HOURS=` busybox expr $RUNTIME / 3600`
+REMAINDER=` busybox expr $RUNTIME % 3600`
+MINS=` busybox expr $REMAINDER / 60`
+SECS=` busybox expr $REMAINDER % 60`
+RUNTIME=` busybox printf "%02d:%02d:%02d\n" "$HOURS" "$MINS" "$SECS" `
+
+echo
+echo "Zipalign complete! Runtime: ${RUNTIME}"
+echo

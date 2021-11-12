@@ -1,0 +1,42 @@
+#!/system/bin/sh
+# ========================================
+# Battery Calibration
+# ========================================
+
+RUN_EVERY=86400
+
+# Get the last modify date of the Log file, if the file does not exist, set value to 0
+if [ -e $LOG_FILE ]; then
+    LASTRUN=`stat -t $LOG_FILE | awk '{print $14}'`
+else
+    LASTRUN=0
+fi;
+
+# Get current date in epoch format
+CURRDATE=`date +%s`
+
+# Check the interval
+INTERVAL=$(expr $CURRDATE - $LASTRUN)
+
+# If interval is more than the set one, then run the main script
+if [ $INTERVAL -gt $RUN_EVERY ];
+then
+     if [ -e /data/.battery-calibrated ] ; then
+     exit 0
+     fi
+
+     (
+     while : ; do
+     LEVEL=$(cat /sys/class/power_supply/battery/capacity)
+     CUR=$(cat /sys/class/power_supply/battery/batt_current)
+     if [ "$LEVEL" == "100" ] && [ "$CUR" == "0" ] ; then
+     log -p i -t battery-calibration "*** LEVEL: $LEVEL CUR: $CUR***: calibrating..."
+     rm -f /data/system/batterystats.bin
+     touch /data/.battery-calibrated
+     exit 0
+     fi
+     # log -p i -t battery-calibration "*** LEVEL: $LEVEL CUR: $CUR ***: sleeping for $SLEEP s..."
+     sleep $SLEEP
+     done
+     ) &
+fi;
