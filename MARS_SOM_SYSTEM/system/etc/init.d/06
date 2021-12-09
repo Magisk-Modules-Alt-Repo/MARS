@@ -13,9 +13,7 @@ CODEPATHS=` pm list packages -f | busybox cut -d ':' -f2 | busybox cut -d '=' -f
 TOTAL=` echo $CODEPATHS | busybox wc -w `
 CURRENT=0
 
-echo
 echo "Zipaligning..."
-echo
 
 busybox mount -o remount,rw /system
 
@@ -54,6 +52,4 @@ MINS=` busybox expr $REMAINDER / 60`
 SECS=` busybox expr $REMAINDER % 60`
 RUNTIME=` busybox printf "%02d:%02d:%02d\n" "$HOURS" "$MINS" "$SECS" `
 
-echo
 echo "Zipalign complete! Runtime: ${RUNTIME}"
-echo

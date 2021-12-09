@@ -2,8 +2,8 @@
 
 MINAPI=30
 MAXAPI=31
-DYNLIB=false
-DEBUG=false
+#DYNLIB=false
+#DEBUG=false
 
 set_permissions() {
   : 

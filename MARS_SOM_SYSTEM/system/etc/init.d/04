@@ -8,11 +8,12 @@
 # Frequent inserts, updates, and deletes can cause the database file to become fragmented - where data for a single table or index is scattered around the database file.
 # Running VACUUM ensures that each table and index is largely stored contiguously within the database file.
 # In some cases, VACUUM may also reduce the number of partially filled pages in the database, reducing the size of the database file further.
-# sqlite3 binary in /system/xbin is required!
+# sqlite3 binary in /system/bin is required!
 
 # Changelog
-#  v1.0 - (??/??/????) - original version
+#  v1.0 - (DD/MM/YYYY) - original version
 #  v1.1 - (06/01/2013) - run only every X seconds, default = 1 week (mcbyte_it)
+#  v1.2 - (07/12/2021) - Using /system/bin instead of xbin now (Miustone)
 
 # Log file location
 LOG_FILE=/data/sqlite.log
@@ -44,7 +45,7 @@ then
     echo "SQLite database VACUUM and REINDEX started at $( date +"%m-%d-%Y %H:%M:%S" )" | tee -a $LOG_FILE;
 
     for i in `busybox find /d* -iname "*.db"`; do
-        /system/xbin/sqlite3 $i 'VACUUM;';
+        /system/bin/sqlite3 $i 'VACUUM;';
         resVac=$?
         if [ $resVac == 0 ]; then
             resVac="SUCCESS";
@@ -52,7 +53,7 @@ then
             resVac="ERRCODE-$resVac";
         fi;
         
-        /system/xbin/sqlite3 $i 'REINDEX;';
+        /system/bin/sqlite3 $i 'REINDEX;';
         resIndex=$?
         if [ $resIndex == 0 ]; then
             resIndex="SUCCESS";

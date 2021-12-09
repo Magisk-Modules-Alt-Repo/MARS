@@ -107,7 +107,4 @@ MINS=` busybox expr $REMAINDER / 60`
 SECS=` busybox expr $REMAINDER % 60`
 RUNTIME=`busybox printf "%02d:%02d:%02d\n" "$HOURS" "$MINS" "$SECS"`
 
-echo
-echo
 echo "Fix permissions complete! Runtime: ${RUNTIME}"
-echo

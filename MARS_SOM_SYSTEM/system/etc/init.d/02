@@ -21,8 +21,8 @@ INTERVAL=$(expr $CURRDATE - $LASTRUN)
 # If interval is more than the set one, then run the main script
 if [ $INTERVAL -gt $RUN_EVERY ];
 then
-     if [ -e /data/Trim.log ]; then
-     rm /data/Trim.log
+     if [ -e /data/data/Trim.log ]; then
+     rm /data/data/Trim.log
      fi
 
      LOG=/data/trim.log

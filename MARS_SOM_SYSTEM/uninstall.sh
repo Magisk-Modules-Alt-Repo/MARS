@@ -1,4 +1,4 @@
-# MARS
+# Don't modify anything after this
 if [ -f $INFO ]; then
   while read LINE; do
     if [ "$(echo -n $LINE | tail -c 1)" == "~" ]; then
