@@ -3,7 +3,7 @@ image_view mars.png
 ui_print " "
 ui_print "__________________________________________________"
 ui_print " "
-ui_print " Enabling Google Dialer Functions..."
+ui_print " Enabling Extra Functions..."
 ui_print "__________________________________________________"
 ui_print " "
 if [ $API -ge 30 ]; then
@@ -18,6 +18,6 @@ if [ $API -ge 30 ]; then
     patch_xml -s $DPF '/map/boolean[@name="G__speakeasy_show_privacy_tour"]' "true"
     patch_xml -s $DPF '/map/boolean[@name="__data_rollout__SpeakEasy.SpeakEasyDetailsRollout__launched__"]' "true"
     patch_xml -s $DPF '/map/boolean[@name="__data_rollout__SpeakEasy.CallScreenOnPixelTwoRollout__launched__"]' "true"
-    patch_xml -s $DPF '/map/boolean[@name="G__speakeasy_postcall_survey_enabled"]' "true"
+    patch_xml -s $DPF '/map/boolean[@name="G__speakeasy_postcall_survey_enabled"]' "false"
   fi
 fi

@@ -1,0 +1,43 @@
+# Copyright (c) 2019, The Linux Foundation. All rights reserved.
+
+acdb_dev_id:136
+!Playback
+Rxdevice:0
+
+enable
+WSA_CDC_DMA_RX_0 Channels:Two
+WSA RX0 MUX:AIF1_PB
+WSA RX1 MUX:AIF1_PB
+WSA_RX0 INP0:RX0
+WSA_RX1 INP0:RX1
+WSA_COMP1 Switch:1
+WSA_COMP2 Switch:1
+SpkrLeft COMP Switch:1
+SpkrRight COMP Switch:1
+SpkrLeft BOOST Switch:1
+SpkrRight BOOST Switch:1
+SpkrLeft VISENSE Switch:1
+SpkrRight VISENSE Switch:1
+SpkrLeft SWR DAC_Port Switch:1
+SpkrRight SWR DAC_Port Switch:1
+WSA_RX0 Digital Volume:70
+WSA_RX1 Digital Volume:70
+WSA_CDC_DMA_RX_0 Audio Mixer MultiMedia1:1
+
+disable
+WSA RX0 MUX:ZERO
+WSA RX1 MUX:ZERO
+WSA_RX0 INP0:ZERO
+WSA_RX1 INP0:ZERO
+WSA_COMP1 Switch:0
+WSA_COMP2 Switch:0
+SpkrLeft COMP Switch:0
+SpkrRight COMP Switch:0
+SpkrLeft BOOST Switch:0
+SpkrRight BOOST Switch:0
+SpkrLeft VISENSE Switch:0
+SpkrRight VISENSE Switch:0
+SpkrLeft SWR DAC_Port Switch:0
+SpkrRight SWR DAC_Port Switch:0
+WSA_CDC_DMA_RX_0 Audio Mixer MultiMedia1:0
+
