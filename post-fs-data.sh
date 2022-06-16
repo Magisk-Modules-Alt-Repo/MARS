@@ -2,7 +2,7 @@
 
 MODDIR=${0%/*}
 
-setenforce 0
+setenforce 1
 
 alias xmlstartlet="$(dirname $MOD)/system/bin/xmlstarlet"
 
